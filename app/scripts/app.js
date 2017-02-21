@@ -42,7 +42,28 @@ angular.module('confusionApp', ['ui.router'])
                     }
                 }
             })
-        
+
+            // route for the menu page
+            .state('app.menu', {
+                url: 'menu',
+                views: {
+                    'content@': {
+                        templateUrl : 'views/menu.html',
+                        controller : 'MenuController'
+                    }
+                }
+            })
+
+            // route for dishdetail page
+            .state('app.dishdetails', {
+                url: 'menu/:id',
+                views: {
+                    'content@': {
+                        templateUrl : 'views/dishdetail.html',
+                        controller : 'DishDetailController'
+                    }
+                }
+            });
     })
 
 ;
