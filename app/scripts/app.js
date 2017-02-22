@@ -12,7 +12,7 @@ angular.module('confusionApp', ['ui.router'])
                         templateUrl : 'views/header.html',
                     },
                     'content': {
-                        templateUrl : '<h1>To be Completed </h1>',
+                        template : '<h1>To be Completed </h1>',
                         controller : 'IndexController'
                     },
                     'footer': {
@@ -64,6 +64,8 @@ angular.module('confusionApp', ['ui.router'])
                     }
                 }
             });
+
+        $urlRouterProvider.otherwise('/');
     })
 
 ;
