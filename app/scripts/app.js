@@ -20,13 +20,13 @@ angular.module('confusionApp', ['ui.router'])
                     }
                 }
             })
-//
+
             // route for the aboutus page
             .state('app.aboutus', {
                 url: 'aboutus',
                 views: {
                     'content@': {
-                        template: '<h1> To be completed </h1>',
+                        template: '<h1> To be completed Aboutus </h1>',
                         controller : 'AboutController'
                     }
                 }
