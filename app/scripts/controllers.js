@@ -105,4 +105,8 @@ angular.module('confusionApp')
         $scope.userComment.rating = 5;
     }])
 
+    .controller('IndexController', ['$scope', function ($scope) {
+        
+    }])
+
 ;
