@@ -20,7 +20,7 @@ angular.module('confusionApp', ['ui.router'])
                     }
                 }
             })
-
+//Router is configured here
             // route for the aboutus page
             .state('app.aboutus', {
                 url: 'aboutus',
