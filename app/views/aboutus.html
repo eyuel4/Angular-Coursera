@@ -59,14 +59,13 @@
                 <li class="media" ng-repeat="leader in leadership">
                     <div class="media-left">
                         <a href="#">
-                            <img class="media-object thumbnail" ng-src="{{leader.image}}" alt="">
+                            <img class="media-object img-thumbnail" ng-src="{{leader.image}}" alt="">
                         </a>
                     </div>
                     <div class="media-body">
-                        <h3 class="media-heading">{{leader.name}}</h3><p class="text-justify text-muted">{{leader.designation}}</p>
+                        <h3 class="media-heading">{{leader.name}}<small class="text-muted ">  {{leader.designation}}</small></h3>
                         <p>{{leader.description}}</p>
                     </div>
-
                 </li>
             </ul>
 

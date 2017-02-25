@@ -72,6 +72,9 @@ angular.module('confusionApp')
 
         var dish= menuFactory.getDish(parseInt($stateParams.id,10));
 
+            $scope.selectedDish = menuFactory.getDish(0);
+
+
         $scope.dish = dish;
 
     }])
@@ -95,13 +98,14 @@ angular.module('confusionApp')
 
 // implement the IndexController and About Controller here
     .controller('IndexController', ['$scope','menuFactory', function($scope, menuFactory){
-        var promotions = menuFactory.getPromotion();
+        var promotions = menuFactory.getPromotion(0);
         $scope.promotions = promotions;
 
     }])
 
     .controller('AboutController', ['$scope', 'corporateFactory',function ($scope, corporateFactory) {
         $scope.leadership = corporateFactory.getLeaders();
+        $scope.leader = corporateFactory.getLeader(0);
         
     }])
 
