@@ -2,9 +2,9 @@
 
 angular.module('confusionApp')
     .constant("baseURL","http://localhost:3000/")
-    .service('menuFactory' ,function($http,baseURL) {
+    .service('menuFactory' ,['$http','baseURL',function($http,baseURL) {
 
-        var dishes=[
+/*        var dishes=[
             {
                 _id:0,
                 name:'Uthapizza',
@@ -173,7 +173,7 @@ angular.module('confusionApp')
 
                 ]
             }
-        ];
+        ];*/
 
 
         var promotions = [
@@ -190,15 +190,15 @@ angular.module('confusionApp')
 
         this.getDishes = function(){
 
-            //return $http.get(baseURL+"dishes");
-            return dishes;
+            return $http.get(baseURL+"dishes");
+            /*return dishes;*/
 
         };
 
         this.getDish = function (index) {
 
-            //return $http.get(baseURL+"dishes/"+index);
-            return dishes[index];
+            return $http.get(baseURL+"dishes/"+index);
+            //return dishes[index];
         };
 
         // implement a function named getPromotion
@@ -208,7 +208,7 @@ angular.module('confusionApp')
         };
 
 
-    })
+    }])
 
     .factory('corporateFactory', function() {
 
