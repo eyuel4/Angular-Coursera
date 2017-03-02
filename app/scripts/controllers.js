@@ -7,13 +7,14 @@ angular.module('confusionApp')
         $scope.tab = 1;
         $scope.filtText = '';
         $scope.showDetails = false;
-        $scope.showMenu = false;
+        $scope.showMenu = true;
         $scope.message = "Loading ...";
 
-        $scope.dishes = {};
+        $scope.dishes = menuFactory.getDishes().query();
 
-/*$scope.dishes = menuFactory.getDishes();*/
-         menuFactory.getDishes()
+        // This Method is for using $http Service
+/*              $scope.dishes = {};
+        menuFactory.getDishes()
              .then(
                  function (response) {
                      $scope.dishes = response.data;
@@ -22,7 +23,7 @@ angular.module('confusionApp')
                  function (response) {
                      $scope.message = "Error: " + response.status + " " + response.statusText;
                  }
-             );
+             );*/
        //console.log($scope.dishes);
 
         $scope.select = function(setTab) {
@@ -85,10 +86,13 @@ angular.module('confusionApp')
     .controller('DishDetailController', ['$scope', '$stateParams', 'menuFactory', function($scope, $stateParams, menuFactory) {
 
         $scope.dish = {};
-        $scope.showDish = false;
+        $scope.showDish = true;
         $scope.message = "Loading ...";
 
-         menuFactory.getDish(parseInt($stateParams.id,10))
+        $scope.dish = menuFactory.getDishes().get({id:parseInt($stateParams.id,10)});
+
+        // The Method below is for using $http Service
+/*         menuFactory.getDish(parseInt($stateParams.id,10))
              .then(
                  function (response) {
                     $scope.dish = response.data;
@@ -97,7 +101,7 @@ angular.module('confusionApp')
                  function (response) {
                      $scope.message = "Error: "+response.status + " "+ response.statusText;
                  }
-             );
+             );*/
 
     }])
 
@@ -120,12 +124,17 @@ angular.module('confusionApp')
 
 // implement the IndexController and About Controller here
     .controller('IndexController', ['$scope','menuFactory','$stateParams','corporateFactory', function($scope, menuFactory, $stateParams,corporateFactory){
-        $scope.dish = {};
+
         $scope.promotion = {};
 
         $scope.message ="Loading ...";
-        $scope.showDish = false;
+        $scope.showDish = true;
 
+        $scope.dish = menuFactory.getDishes().get({id:0});
+
+        // This method below uses $http service
+
+/*       $scope.dish = {};
         menuFactory.getDish(0)
             .then(
                 function (response) {
@@ -135,7 +144,7 @@ angular.module('confusionApp')
                 function (response) {
                     $scope.message = "Error: " + response.status + " " + response.statusText;
                 }
-            );
+            );*/
 
         $scope.promotion = menuFactory.getPromotion(0);
         $scope.leader = corporateFactory.getLeader(3);
