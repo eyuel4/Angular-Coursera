@@ -85,7 +85,7 @@ angular.module('confusionApp')
 
     .controller('DishDetailController', ['$scope', '$stateParams', 'menuFactory', function($scope, $stateParams, menuFactory) {
 
-        $scope.dish = {};
+       // $scope.dish = {};
         $scope.showDish = true;
         $scope.message = "Loading ...";
 
