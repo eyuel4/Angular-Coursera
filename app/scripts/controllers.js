@@ -7,10 +7,18 @@ angular.module('confusionApp')
         $scope.tab = 1;
         $scope.filtText = '';
         $scope.showDetails = false;
-        $scope.showMenu = true;
+        $scope.showMenu = false;
         $scope.message = "Loading ...";
 
-        $scope.dishes = menuFactory.getDishes().query();
+        $scope.dishes = menuFactory.getDishes().query(
+            function (response) {
+                $scope.dishes = response;
+                $scope.showMenu = true;
+            },
+            function (response) {
+                $scope.message = "Error: " + response.status + " " + response.statusText;
+            }
+        );
 
         // This Method is for using $http Service
 /*              $scope.dishes = {};
@@ -86,10 +94,19 @@ angular.module('confusionApp')
     .controller('DishDetailController', ['$scope', '$stateParams', 'menuFactory', function($scope, $stateParams, menuFactory) {
 
        // $scope.dish = {};
-        $scope.showDish = true;
+        $scope.showDish = false;
         $scope.message = "Loading ...";
 
-        $scope.dish = menuFactory.getDishes().get({id:parseInt($stateParams.id,10)});
+        $scope.dish = menuFactory.getDishes().get({id:parseInt($stateParams.id,10)})
+            .$promise.then(
+                function (response) {
+                    $scope.dish = response;
+                    $scope.showDish = true;
+                },
+                function (response) {
+                    $scope.message = "Error: "+response.status + " "+ response.statusText;
+                }
+            );
 
         // The Method below is for using $http Service
 /*         menuFactory.getDish(parseInt($stateParams.id,10))
@@ -128,9 +145,18 @@ angular.module('confusionApp')
         $scope.promotion = {};
 
         $scope.message ="Loading ...";
-        $scope.showDish = true;
+        $scope.showDish = false;
 
-        $scope.dish = menuFactory.getDishes().get({id:0});
+        $scope.dish = menuFactory.getDishes().get({id:0})
+            .$promise.then(
+                function (response) {
+                    $scope.dish = response;
+                    $scope.showDish = true;
+                },
+                function (response) {
+                    $scope.message = "Error: " + response.status + " " + response.statusText;
+                }
+            );
 
         // This method below uses $http service
 
