@@ -26,7 +26,8 @@
     "font-awesome": "~4.4.0",
     "angular": "~1.6.2",
     "angular-route": "^1.6.2",
-    "angular-resource": "^1.6.2"
+    "angular-resource": "^1.6.2",
+    "angular-mocks": "^1.6.3"
   },
   "resolutions": {
     "angular": "~1.6.2"
