@@ -32,7 +32,10 @@
             <h3 align=center>This Month's Promotions</h3>
         </div>
         <div class="col-xs-12 col-sm-8">
-            <div class="media">
+            <div ng-if="!showPromo">
+                <h3>{{promoMessage}}</h3>
+            </div>
+            <div class="media" ng-if="showPromo">
                 <div class="media-body">
 
                     <h2 class="media-heading">{{promotion.name}}
@@ -44,6 +47,7 @@
                 </div>
             </div>
         </div>
+
         <div class="col-xs-12 col-sm-2">
             <div class="media">
                 <div class="media-right media-middle">

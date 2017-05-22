@@ -11,10 +11,9 @@
                 </a>
             </div>
             <div class="media-body">
-                <h2 class="media-heading">{{dish.name}}>
+                <h2 class="media-heading">{{dish.name}}
                     <span class="label label-danger label-xs">{{dish.label}}</span>
                     <span class="badge">{{dish.price | currency}}</span>
-
                 </h2>
                 <p>{{dish.description}}</p>
             </div>
@@ -24,9 +23,9 @@
 
             <div class="form-group-sm">
                 <span>Customer Comments</span>
-                <label for="sortby">   Sort by: </label> <input type="text" id="sortby" ng-model="sortTerm">
+                <label for="sortby">   Sort by: </label> <input type="text" id="sortby" ng-model="orderText">
         </div>
-                <blockquote ng-repeat="comment1 in dish.comments | orderBy : sortTerm">
+                <blockquote ng-repeat="comment1 in dish.comments | orderBy : orderText">
                     <span>{{comment1.rating}} Stars</span>
                     <p>{{comment1.comment}}</p>
                     <footer>{{comment1.author}},{{comment1.date |date:'MMM.dd,yyyy'}}</footer>

@@ -176,7 +176,7 @@ angular.module('confusionApp')
         ];*/
 
 
-        var promotions = [
+/*        var promotions = [
             {
                 _id:0,
                 name:'Weekend Grand Buffet',
@@ -186,7 +186,7 @@ angular.module('confusionApp')
                 description:'Featuring mouthwatering combinations with a choice of five different salads, six enticing appetizers, six main entrees and five choicest desserts. Free flowing bubbly and soft drinks. All for just $19.99 per person ',
             }
 
-        ];
+        ];*/
 
         this.getDishes = function(){
 
@@ -206,14 +206,21 @@ angular.module('confusionApp')
 
         // implement a function named getPromotion
         // that returns a selected promotion.
-        this.getPromotion = function (index) {
+/*        this.getPromotion = function (index) {
             return promotions[index];
+        };*/
+
+        //implement getPromotion using $resource rest api from json-server
+        this.getPromotion = function () {
+            return $resource(baseURL+"promotions/:id",null,
+                {'update':{method: 'PUT'}});
         };
+
 
 
     }])
 
-    .factory('corporateFactory', function() {
+    .factory('corporateFactory', ['$resource','baseURL',function($resource,baseURL) {
 
         var corpfac = {};
 
@@ -254,6 +261,8 @@ angular.module('confusionApp')
         // Remember this is a factory not a service
         corpfac.getLeaders = function () {
             return leadership;
+   /*        return $resource(baseURL+"leaders/:id",null,
+               { 'update':{method:'PUT'}});*/
         };
 
         corpfac.getLeader = function (index) {
@@ -263,6 +272,6 @@ angular.module('confusionApp')
         return corpfac;
 
 
-    })
+    }])
 
 ;

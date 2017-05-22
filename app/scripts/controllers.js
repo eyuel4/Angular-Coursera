@@ -142,14 +142,14 @@ angular.module('confusionApp')
     }])
 
 // implement the IndexController and About Controller here
-    .controller('IndexController', ['$scope','menuFactory','$stateParams','corporateFactory', function($scope, menuFactory, $stateParams,corporateFactory){
+    .controller('IndexController', ['$scope','menuFactory','$stateParams','corporateFactory', function($scope, menuFactory, $stateParams,corporateFactory) {
 
-        $scope.promotion = {};
+        /*$scope.promotion = {};*/
 
-        $scope.message ="Loading ...";
+        $scope.message = "Loading ...";
         $scope.showDish = false;
 
-        $scope.dish = menuFactory.getDishes().get({id:0})
+        $scope.dish = menuFactory.getDishes().get({id: 0})
             .$promise.then(
                 function (response) {
                     $scope.dish = response;
@@ -162,21 +162,50 @@ angular.module('confusionApp')
 
         // This method below uses $http service
 
-/*       $scope.dish = {};
-        menuFactory.getDish(0)
-            .then(
+        /*       $scope.dish = {};
+         menuFactory.getDish(0)
+         .then(
+         function (response) {
+         $scope.dish = response.data;
+         $scope.showDish = true;
+         },
+         function (response) {
+         $scope.message = "Error: " + response.status + " " + response.statusText;
+         }
+         );*/
+
+        /*   $scope.promotion = menuFactory.getPromotion(0);*/
+         $scope.leader = corporateFactory.getLeader(3);
+
+        $scope.promoMessage = "Loading ...";
+        $scope.showPromo = false;
+
+        $scope.promotion = menuFactory.getPromotion().get({id: 0})
+            .$promise.then(
                 function (response) {
-                    $scope.dish = response.data;
-                    $scope.showDish = true;
+                    $scope.promotion = response;
+                    $scope.showPromo = true;
                 },
                 function (response) {
-                    $scope.message = "Error: " + response.status + " " + response.statusText;
+                    $scope.message = "Error : " + response.status + " " + response.statusText;
                 }
-            );*/
+            );
 
-        $scope.promotion = menuFactory.getPromotion(0);
-        $scope.leader = corporateFactory.getLeader(3);
+/*        $scope.leaderMessage = "Loading ...";
+        $scope.showLeader = false;
 
+
+        $scope.leader = corporateFactory.getLeaders().get({id: 3})
+            .promise().then(
+                function(response) {
+                    $scope.leader = response;
+                    $scope.showLeader = true;
+                },
+                function (response) {
+                    $scope.leaderMessage = "Error : " + response.status +" " + response.statusText;
+                }
+            );
+        console.log($scope.leader);*/
 
     }])
 
